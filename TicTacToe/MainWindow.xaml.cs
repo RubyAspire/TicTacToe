@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Input.Manipulations;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -22,6 +23,8 @@ namespace TicTacToe
     {
         #region Public Properties
         public bool player1 = false;
+        public int p1 = 0;
+        public int p2 = 0;
         public bool gameOver = false;
         #endregion
 
@@ -31,6 +34,9 @@ namespace TicTacToe
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+            Title = $"Player 1: {p1}              Player 2: {p2}";
+
         }
 
         /// <summary>
@@ -81,7 +87,14 @@ namespace TicTacToe
             if (b1.Content == b2.Content && b2.Content == b3.Content && b1.Content != null && b2.Content != null && b3.Content != null)
             {
                 b1.Background = b2.Background = b3.Background = Brushes.LightGreen;
-                var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
+
+                if (player1 == true)
+                    p1++;
+                else
+                    p2++;
+
+                Title = $"Player 1: {p1}              Player 2: {p2}";
+                var result = player1 ? MessageBox.Show("Player 1 wins"): MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
                 {
                     gameOver = true;
@@ -92,6 +105,14 @@ namespace TicTacToe
             else if (b4.Content == b5.Content && b5.Content == b6.Content && b4.Content != null && b5.Content != null && b6.Content != null)
             {
                 b4.Background = b5.Background = b6.Background = Brushes.LightGreen;
+
+                if (player1 == true)
+                    p1++;
+                else
+                    p2++;
+
+                Title = $"Player 1: {p1}              Player 2: {p2}";
+
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
                 {
@@ -104,6 +125,14 @@ namespace TicTacToe
             else if (b7.Content == b8.Content && b8.Content == b9.Content && b7.Content != null && b8.Content != null && b9.Content != null)
             {
                 b7.Background = b8.Background = b9.Background = Brushes.LightGreen;
+
+                if (player1 == true)
+                    p1++;
+                else
+                    p2++;
+
+                Title = $"Player 1: {p1}              Player 2: {p2}";
+
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
                 {
@@ -118,6 +147,14 @@ namespace TicTacToe
             if (b1.Content == b4.Content && b4.Content == b7.Content && b1.Content != null && b4.Content != null && b7.Content != null)
             {
                 b1.Background = b4.Background = b7.Background = Brushes.LightGreen;
+
+                if (player1 == true)
+                    p1++;
+                else
+                    p2++;
+
+                Title = $"Player 1: {p1}              Player 2: {p2}";
+
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
                 {
@@ -128,6 +165,14 @@ namespace TicTacToe
             else if (b2.Content == b5.Content && b5.Content == b8.Content && b2.Content != null && b5.Content != null && b8.Content != null)
             {
                 b2.Background = b5.Background = b8.Background = Brushes.LightGreen;
+
+                if (player1 == true)
+                    p1++;
+                else
+                    p2++;
+
+                Title = $"Player 1: {p1}              Player 2: {p2}";
+
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
                 {
@@ -138,6 +183,14 @@ namespace TicTacToe
             else if (b3.Content == b6.Content && b6.Content == b9.Content && b3.Content != null && b6.Content != null && b9.Content != null)
             {
                 b3.Background = b6.Background = b9.Background = Brushes.LightGreen;
+
+                if (player1 == true)
+                    p1++;
+                else
+                    p2++;
+
+                Title = $"Player 1: {p1}              Player 2: {p2}";
+
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
                 {
@@ -152,6 +205,14 @@ namespace TicTacToe
             if (b1.Content == b5.Content && b5.Content == b9.Content && b1.Content != null && b5.Content != null && b9.Content != null)
             {
                 b1.Background = b5.Background = b9.Background = Brushes.LightGreen;
+
+                if (player1 == true)
+                    p1++;
+                else
+                    p2++;
+
+                Title = $"Player 1:  {p1}              Player 2:  {p2}";
+
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
                 {
