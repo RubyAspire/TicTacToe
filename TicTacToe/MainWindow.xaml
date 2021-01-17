@@ -5,88 +5,142 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TicTacToe"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        MouseDown="Window_MouseDown" ResizeMode="NoResize"
         Title="{Binding  Title}" Height="400" Width="450">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        
-        <!--#region First Row Buttons-->
-        <Button Grid.Column="0"
+    <Canvas>
+        <Border Background="Black" Panel.ZIndex="1" 
+                Canvas.Top="140" Canvas.Left="130" 
+                Name="borPlayerNames" BorderThickness="2" BorderBrush="Black">
+            <StackPanel Background="Violet" 
+                        Width="200" Height="170"
+                        >
+                <TextBlock Text="Enter Player 1 Name: " 
+                           FontWeight="Bold" Margin="5 2 0 0"/>
+                <TextBox  Margin="10" Name="txtPlayer1Name"
+                          Height="25" FontSize="15"/>
+
+                <TextBlock Text="Enter Player 2 Name: " 
+                           FontWeight="Bold" Margin="5 2 0 0"/>
+                <TextBox  Margin="10" Name="txtPlayer2Name"
+                           Height="25" FontSize="15"/>
+
+                <Button Content="OK" Width="150" Height="30" 
+                        BorderThickness="0" Foreground="White" 
+                        Background="HotPink" Click="NameEntry_Click"/>
+            </StackPanel>
+        </Border>
+        <Grid Background="Black" Width="450">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+    
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontFamily" Value="Verdana"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Padding" Value="10"/>
+                </Style>
+            </Grid.Resources>
+
+            <WrapPanel Margin="10 0 0 0">
+                <TextBlock Text="Player 1:" Name="txtP1Name"/>
+                <TextBlock Name="p1Score" Text="0"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Column="1">
+                <TextBlock Text="Player 2:" Name="txtP2Name"/>
+                <TextBlock Name="p2Score" Text="0"/>
+            </WrapPanel>
+
+            <Button Grid.Column="2" Background="Transparent"
+                    Content="X" FontFamily="Verdana"
+                    FontSize="20" Foreground="White"
+                    BorderBrush="Transparent" Padding="10 0 10 0"
+                    Click="Button_Click_1" BorderThickness="0"/>
+        </Grid>
+        <Grid Canvas.Top="45" Width="450" Height="360">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="FontSize" Value="60"/>
+                    <Setter Property="FontFamily" Value="Consolas"/>
+                    <Setter Property="BorderThickness" Value="0.7"/>
+                </Style>
+            </Grid.Resources>
+
+            <!--#region First Row Buttons-->
+            <Button Grid.Column="0"
                 x:Name="b1"
                 Grid.Row="0"
                 Click="Button_Click"
-                Background="White"
-                FontSize="50"/>
-        
-        <Button Grid.Column="1"
+                Background="White"/>
+
+            <Button Grid.Column="1"
                 x:Name="b2"
                 Grid.Row="0"
                 Click="Button_Click"
-                Background="White"
-                FontSize="50"/>
-        
-        <Button Grid.Column="2"
+                Background="White"/>
+
+            <Button Grid.Column="2"
                 x:Name="b3"
                 Grid.Row="0"
                 Click="Button_Click"
-                Background="White"
-                FontSize="50"/>
-        <!--#endregion-->
+                Background="White"/>
+            <!--#endregion-->
 
-        <!--#region Second Row Buttons-->
-        <Button Grid.Column="0"
+            <!--#region Second Row Buttons-->
+            <Button Grid.Column="0"
                 x:Name="b4"
                 Grid.Row="1"
                 Click="Button_Click"
-                Background="White"
-                FontSize="50"/>
+                Background="White"/>
 
-        <Button Grid.Column="1"
+            <Button Grid.Column="1"
                 x:Name="b5"
                 Grid.Row="1"
                 Click="Button_Click"
-                Background="White"
-                FontSize="50"/>
+                Background="White"/>
 
-        <Button Grid.Column="2"
+            <Button Grid.Column="2"
                 x:Name="b6"
                 Grid.Row="1"
                 Click="Button_Click"
-                Background="White"
-                FontSize="50"/>
-        <!--#endregion-->
+                Background="White"/>
+            <!--#endregion-->
 
-        <!--#region Third Row Buttons-->
-        <Button Grid.Column="0"
+            <!--#region Third Row Buttons-->
+            <Button Grid.Column="0"
                 x:Name="b7"
                 Grid.Row="2"
                 Click="Button_Click"
-                Background="White"
-                FontSize="50"/>
+                Background="White"/>
 
-        <Button Grid.Column="1"
+            <Button Grid.Column="1"
                 x:Name="b8"
                 Grid.Row="2"
                 Click="Button_Click"
-                Background="White"
-                FontSize="50"/>
+                Background="White"/>
 
-        <Button Grid.Column="2"
+            <Button Grid.Column="2"
                 x:Name="b9"
                 Grid.Row="2"
                 Click="Button_Click"
-                Background="White"
-                FontSize="50"/>
-        <!--#endregion-->
-    </Grid>
-    
+                Background="White"/>
+            <!--#endregion-->
+        </Grid>
+    </Canvas>
 </Window>

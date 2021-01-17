@@ -26,6 +26,8 @@ namespace TicTacToe
         public int p1 = 0;
         public int p2 = 0;
         public bool gameOver = false;
+        List<Button> buttons;
+            
         #endregion
 
         /// <summary>
@@ -35,8 +37,13 @@ namespace TicTacToe
         {
             InitializeComponent();
             this.DataContext = this;
-            Title = $"Player 1: {p1}              Player 2: {p2}";
-
+            buttons = new List<Button>(){
+                b1,b2,b3,b4,b5,b6,b7,b8,b9
+            };
+            foreach (var item in buttons)
+            {
+                item.IsEnabled = false;
+            }
         }
 
         /// <summary>
@@ -46,6 +53,9 @@ namespace TicTacToe
         {
             b1.Content = b2.Content = b3.Content = b4.Content = b5.Content = b6.Content = b7.Content = b8.Content = b9.Content = null;
             b1.Background = b2.Background = b3.Background = b4.Background = b5.Background = b6.Background = b7.Background = b8.Background = b9.Background =Brushes.White;
+
+            player1 = false;
+            gameOver = false;
         }
 
         /// <summary>
@@ -62,17 +72,7 @@ namespace TicTacToe
                 return;
             else
             {
-                //if the game was over i.e someone won or everyone lost
-                //we return the game to beginner state
-                if (gameOver == true)
-                {
-                    player1 = true;
-                    gameOver = false;
-                }
-                else
-                    //switch between true and false to change the button value and player turn
-                    player1 = !player1;
-                
+                player1 = !player1;
                 //depending on whose turn it is the button value will contain an X or O
                 b.Content = player1 == true ? "X" : "O";               
             }
@@ -93,7 +93,8 @@ namespace TicTacToe
                 else
                     p2++;
 
-                Title = $"Player 1: {p1}              Player 2: {p2}";
+                p1Score.Text = p1.ToString();
+                p2Score.Text = p2.ToString();
                 var result = player1 ? MessageBox.Show("Player 1 wins"): MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
                 {
@@ -111,7 +112,8 @@ namespace TicTacToe
                 else
                     p2++;
 
-                Title = $"Player 1: {p1}              Player 2: {p2}";
+                p1Score.Text = p1.ToString();
+                p2Score.Text = p2.ToString();
 
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
@@ -131,7 +133,8 @@ namespace TicTacToe
                 else
                     p2++;
 
-                Title = $"Player 1: {p1}              Player 2: {p2}";
+                p1Score.Text = p1.ToString();
+                p2Score.Text = p2.ToString();
 
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
@@ -153,7 +156,8 @@ namespace TicTacToe
                 else
                     p2++;
 
-                Title = $"Player 1: {p1}              Player 2: {p2}";
+                p1Score.Text = p1.ToString();
+                p2Score.Text = p2.ToString();
 
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
@@ -171,7 +175,8 @@ namespace TicTacToe
                 else
                     p2++;
 
-                Title = $"Player 1: {p1}              Player 2: {p2}";
+                p1Score.Text = p1.ToString();
+                p2Score.Text = p2.ToString();
 
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
@@ -189,7 +194,8 @@ namespace TicTacToe
                 else
                     p2++;
 
-                Title = $"Player 1: {p1}              Player 2: {p2}";
+                p1Score.Text = p1.ToString();
+                p2Score.Text = p2.ToString();
 
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
@@ -211,7 +217,8 @@ namespace TicTacToe
                 else
                     p2++;
 
-                Title = $"Player 1:  {p1}              Player 2:  {p2}";
+                p1Score.Text = p1.ToString();
+                p2Score.Text = p2.ToString();
 
                 var result = player1 ? MessageBox.Show("Player 1 wins") : MessageBox.Show("Player 2 wins");
                 if (result == MessageBoxResult.OK)
@@ -246,6 +253,31 @@ namespace TicTacToe
             }
             #endregion
 
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            
+        }
+
+        private void NameEntry_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtPlayer1Name.Text) && !string.IsNullOrWhiteSpace(txtPlayer2Name.Text))
+            {
+                txtP1Name.Text = $"{txtPlayer1Name.Text}:";
+                txtP2Name.Text = $"{txtPlayer2Name.Text}:";
+                borPlayerNames.Visibility = Visibility.Hidden;
+                foreach (var item in buttons)
+                {
+                    item.IsEnabled = true;
+                }
+            }
         }
     }
 }
